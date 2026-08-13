@@ -39,7 +39,7 @@ class TestNoiseFiltering:
         an answer sourced from that file."""
         result: dict = ask_question(vector_store, llm, "What is the remote work policy?")
         sources_text: str = " ".join(result["sources"]).lower()
-        assert "remote work" not in sources_text or "acme corp employee handbook" not in sources_text
+        assert "remote work" not in sources_text and "acme corp employee handbook" not in sources_text
 
     def test_sources_never_include_handbook_or_product_faq(
         self, vector_store, llm
